@@ -7,6 +7,7 @@ public class SnakeAndLadderProgram {
         int playerInitPosition=0;
         int newPosition=0;
         int optionNumber;
+        int diceNumber;
 
         public void showPosition(){
             System.out.println("Welcome to SNAKE AND LADDER PROGRAM");
@@ -22,7 +23,7 @@ public class SnakeAndLadderProgram {
     }
     public void optionPlay(int diceNumber)
     {
-        int optionNo= (int) Math.floor(Math.random()*10)%3+1;
+        int optionNumber= (int) Math.floor(Math.random()*10)%3+1;
         System.out.println("Option Number : " + optionNumber);
 
         switch (optionNumber)
@@ -31,10 +32,16 @@ public class SnakeAndLadderProgram {
                 System.out.println("You Got No Play");
                 newPosition = 0;
                 break;
+
             case isLadder:
                 System.out.println("You Got Ladder");
                 playerInitPosition = playerInitPosition + diceNumber;
+                if (playerInitPosition > 100) {
+                    System.out.println("There is no such position");
+                    playerInitPosition = --diceNumber;
+                }
                 break;
+
             case isSnake:
                 System.out.println("You got snake");
                 playerInitPosition = playerInitPosition - diceNumber;
@@ -51,5 +58,12 @@ public class SnakeAndLadderProgram {
 
             P1.showPosition();
             System.out.println("Input from user by rolling dice : " + P1.rollingDice());
+            P1.optionPlay(P1.rollingDice());
+            P1.showPosition();
+            P1.optionPlay(P1.rollingDice());
+            P1.showPosition();P1.optionPlay(P1.rollingDice());
+            P1.showPosition();
+            P1.optionPlay(P1.rollingDice());
+            P1.showPosition();
         }
     }
