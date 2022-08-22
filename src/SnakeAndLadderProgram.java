@@ -1,9 +1,17 @@
 public class SnakeAndLadderProgram {
         int startingPosition=0;
+        public static final int isNoPlay = 0;
+        public static final int isSnake = 1;
+        public static final int isLadder = 2;
+
+        int playerInitPosition=0;
+        int newPosition=0;
+        int optionNumber;
 
         public void showPosition(){
             System.out.println("Welcome to SNAKE AND LADDER PROGRAM");
             System.out.println("Starting position of the player = " + startingPosition);
+            System.out.println("Starting position of the player = " + playerInitPosition);
 
         }
 
@@ -12,7 +20,32 @@ public class SnakeAndLadderProgram {
         int diceNumber = (int) Math.floor(Math.random()*10)%6+1;
         return diceNumber;
     }
+    public void optionPlay(int diceNumber)
+    {
+        int optionNo= (int) Math.floor(Math.random()*10)%3+1;
+        System.out.println("Option Number : " + optionNumber);
 
+        switch (optionNumber)
+        {
+            case isNoPlay:
+                System.out.println("You Got No Play");
+                newPosition = 0;
+                break;
+            case isLadder:
+                System.out.println("You Got Ladder");
+                playerInitPosition = playerInitPosition + diceNumber;
+                break;
+            case isSnake:
+                System.out.println("You got snake");
+                playerInitPosition = playerInitPosition - diceNumber;
+                if(playerInitPosition < 0)
+                {
+                    playerInitPosition = 0;
+                }
+                break;
+
+        }
+    }
         public static void main(String[] args) {
             SnakeAndLadderProgram P1 = new SnakeAndLadderProgram();
 
