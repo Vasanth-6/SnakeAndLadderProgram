@@ -36,7 +36,7 @@ public class SnakeAndLadderProgram {
             case isLadder:
                 System.out.println("You Got Ladder");
                 playerInitPosition = playerInitPosition + diceNumber;
-                if (playerInitPosition > 100) {
+                if (playerInitPosition == 100) {
                     System.out.println("There is no such position");
                     playerInitPosition = --diceNumber;
                 }
